@@ -22,9 +22,13 @@ The R dependances ```rentrez``` and ```dplyr``` are installed by the ```scripts/
 The list of ASVs to blast should be put in the ```data``` directory with the following format.
 
 ```ID1 Sequence1```
+
 ```ID2 Sequence2```
+
 ```ID3 Sequence3```
+
 ```ID4 Sequence4```
+
 ```etc...```
 
 The pipeline will produce an intermediary ```1data/queries.fasta``` file processed by the rest of the pipeline.
