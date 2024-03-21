@@ -8,26 +8,44 @@
 
 # Package "rentrez" to import databases from NCBI:
 # https://github.com/ropensci/rentrez
-install.packages("rentrez")
+if (!require("rentrez")) install.packages("rentrez", repos = "http://cran.us.r-project.org")
+if (!require("dplyr")) install.packages("dplyr", repos = "http://cran.us.r-project.org")
+
 library(rentrez)
 library(dplyr)
+
+############################################################################################################
+
+# Set up the directories
+
+# Your path to the raw reads here:
+path_data <- file.path("..", "data")
+
+# Path to the outputs of the pipeline:
+path_results <- file.path("..", "results")
+if(!dir.exists(path_results)) dir.create(path_results)
+
+# Create directory for plots:
+path_plots <- file.path("..", "plots")
+if(!dir.exists(path_plots)) dir.create(path_plots)
+
 
 #############################################################################################################
 # make a fasta file of the queries from David file.
 
 # Import David file:
-table <- read.csv("../data/Taxonomy_Ciguarisk_5hits_blast_6000ASVs_DM_v2+RT_Corrected.csv")
-sub <- table[c("ASV.number", "Seq")]
+#table <- file.path(path_data, "Taxonomy_Ciguarisk_5hits_blast_6000ASVs_DM_v2+RT_Corrected.csv")
+#sub <- table[c("ASV.number", "Seq")]
 
 # Transform this list in fasta format with the following function:
 #add ">" to headers
-sub$ASV.number <- paste0(">",sub$ASV.number)
+#sub[["ASV.number"]] <- paste0(">",sub[["ASV.number"]])
 
 # bind rows of headers and seqs
-seqs_fasta <- c(rbind(sub$ASV.number, sub$Seq))
+#seqs_fasta <- c(rbind(sub[["ASV.number"]], sub[["Seq"]]))
 
 # Write the FASTA file
-write(x = seqs_fasta, file = "../data/queries.fasta")
+#write(x = seqs_fasta, file = file.path(path_data, "queries.fasta")
 
 #############################################################################################################
 # Giving the path to the BLAST script.
