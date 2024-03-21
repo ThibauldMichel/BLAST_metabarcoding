@@ -34,18 +34,18 @@ if(!dir.exists(path_plots)) dir.create(path_plots)
 # make a fasta file of the queries from David file.
 
 # Import David file:
-#table <- file.path(path_data, "Taxonomy_Ciguarisk_5hits_blast_6000ASVs_DM_v2+RT_Corrected.csv")
-#sub <- table[c("ASV.number", "Seq")]
+table <- file.path(path_data, "list.csv")
+sub <- table[c("ASV.number", "Seq")]
 
 # Transform this list in fasta format with the following function:
-#add ">" to headers
-#sub[["ASV.number"]] <- paste0(">",sub[["ASV.number"]])
+# add ">" to headers
+sub[["ASV.number"]] <- paste0(">",sub[["ASV.number"]])
 
 # bind rows of headers and seqs
-#seqs_fasta <- c(rbind(sub[["ASV.number"]], sub[["Seq"]]))
+seqs_fasta <- c(rbind(sub[["ASV.number"]], sub[["Seq"]]))
 
 # Write the FASTA file
-#write(x = seqs_fasta, file = file.path(path_data, "queries.fasta")
+write(x = seqs_fasta, file = file.path(path_data, "queries.fasta")
 
 #############################################################################################################
 # Giving the path to the BLAST script.
