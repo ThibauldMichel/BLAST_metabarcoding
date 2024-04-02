@@ -1,6 +1,11 @@
 # BLAST_metabarcoding
 
 ## Description
+Three different tools accessible for BLASTing ASV from the DADA2 fasta output. 
+1. remote BLAST
+2. local BLAST with NCBI database
+3. local BLAST with custom-made database
+
 The BLAST_metabarcoding pipeline has been developped to blast a list of ASVs barcodes to the NCBI nucleotides database and return the best matches and taxonomic and species identification.
 
 ## Directories
